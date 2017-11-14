@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".PowerConnectionReceiver">
+        <receiver android:name=".PowerConnectionBroadcastReceiver">
 
         </receiver>
 

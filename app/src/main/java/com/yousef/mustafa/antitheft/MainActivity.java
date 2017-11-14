@@ -15,26 +15,21 @@ public class MainActivity extends AppCompatActivity {
 
     Button startServiceButton;
     BroadcastReceiver powerConnectionBroadcastReceiver;
-    Intent powerConnectionIntent;
-    Intent powerDisconnectionIntent;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startServiceButton = (ToggleButton) findViewById(R.id.startServiceButton);
-        powerConnectionBroadcastReceiver = new PowerConnectionReceiver();
-        powerConnectionIntent = new Intent("android.intent.action.ACTION_POWER_DISCONNECTED");
-        powerDisconnectionIntent = new Intent("android.intent.action.ACTION_POWER_CONNECTED");
-
+        powerConnectionBroadcastReceiver = new PowerConnectionBroadcastReceiver();
 
         startServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (startServiceButton.isActivated()) {
-                    unregisterReceiver(powerConnectionBroadcastReceiver);
-                    Toast.makeText(MainActivity.this, "Service stopped", Toast.LENGTH_SHORT).show();
                     startServiceButton.setActivated(false);
+                    Toast.makeText(MainActivity.this, "Service stopped", Toast.LENGTH_SHORT).show();
+                    unregisterReceiver(powerConnectionBroadcastReceiver);
                 } else {
                     monitorBatteryChanges();
                 }
