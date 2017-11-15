@@ -16,7 +16,7 @@ public class PowerConnectionBroadcastReceiver extends BroadcastReceiver {
         String action = intent.getAction();
 
         if (action.equals(Intent.ACTION_POWER_DISCONNECTED)) {
-            mediaPlayer = MediaPlayer.create(context, R.raw.alarm_1);
+            mediaPlayer = MediaPlayer.create(context, R.raw.alarm);
             mediaPlayer.start();
             mediaPlayer.setLooping(true);
             Toast.makeText(context, "Alarm started", Toast.LENGTH_SHORT).show();
