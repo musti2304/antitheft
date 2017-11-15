@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button startServiceButton;
     BroadcastReceiver powerConnectionBroadcastReceiver;
+    IntentFilter powerDisconnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_DISCONNECTED");
+    IntentFilter powerConnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_CONNECTED");
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -27,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (startServiceButton.isActivated()) {
+                    unregisterReceiver(powerConnectionBroadcastReceiver);
                     startServiceButton.setActivated(false);
                     Toast.makeText(MainActivity.this, "Service stopped", Toast.LENGTH_SHORT).show();
-                    unregisterReceiver(powerConnectionBroadcastReceiver);
                 } else {
                     monitorBatteryChanges();
                 }
@@ -38,11 +41,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void monitorBatteryChanges() {
-        IntentFilter powerDisconnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_DISCONNECTED");
         registerReceiver(powerConnectionBroadcastReceiver, powerDisconnectedIntentFilter);
-        IntentFilter powerConnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_CONNECTED");
         registerReceiver(powerConnectionBroadcastReceiver, powerConnectedIntentFilter);
-        Toast.makeText(MainActivity.this, "Service started", Toast.LENGTH_SHORT).show();
         startServiceButton.setActivated(true);
+        Toast.makeText(MainActivity.this, "Service started", Toast.LENGTH_SHORT).show();
     }
 }
