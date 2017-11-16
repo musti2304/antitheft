@@ -3,8 +3,15 @@ package com.yousef.mustafa.antitheft;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.zip.Inflater;
 
 public class PowerConnectionBroadcastReceiver extends BroadcastReceiver {
 
@@ -22,9 +29,10 @@ public class PowerConnectionBroadcastReceiver extends BroadcastReceiver {
             Toast.makeText(context, "Alarm started", Toast.LENGTH_SHORT).show();
         } else {
             try {
-                if (mediaPlayer != null)
-                mediaPlayer.release();
-                Toast.makeText(context, "Alarm stopped", Toast.LENGTH_SHORT).show();
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                    Toast.makeText(context, "Alarm stopped", Toast.LENGTH_SHORT).show();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

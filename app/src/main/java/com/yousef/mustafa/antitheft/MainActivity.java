@@ -4,10 +4,16 @@ package com.yousef.mustafa.antitheft;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -18,13 +24,14 @@ public class MainActivity extends AppCompatActivity {
     IntentFilter powerDisconnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_DISCONNECTED");
     IntentFilter powerConnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_CONNECTED");
 
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startServiceButton = (ToggleButton) findViewById(R.id.startServiceButton);
+        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
+
         powerConnectionBroadcastReceiver = new PowerConnectionBroadcastReceiver();
+        startServiceButton = (ToggleButton) findViewById(R.id.startServiceButton);
 
         startServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,4 +53,23 @@ public class MainActivity extends AppCompatActivity {
         startServiceButton.setActivated(true);
         Toast.makeText(MainActivity.this, "Service started", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
+    }
+
 }

@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yousef.mustafa.antitheft.MainActivity">
+    tools:context="com.yousef.mustafa.antitheft.MainActivity"
+    android:id="@+id/layout_main">
 
     <ToggleButton
         android:id="@+id/startServiceButton"
         android:layout_width="130dp"
         android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:textColorLink="@android:color/holo_blue_dark"
-        android:textOff="Start"
-        android:textOn="Stop"
+        android:textOff="@string/start"
+        android:textOn="@string/stop"
         android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:textStyle="bold" />
+</RelativeLayout>
