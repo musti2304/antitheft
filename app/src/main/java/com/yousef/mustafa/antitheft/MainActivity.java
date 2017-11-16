@@ -11,12 +11,15 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
     Button startServiceButton;
     BroadcastReceiver powerConnectionBroadcastReceiver;
     IntentFilter powerDisconnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_DISCONNECTED");
     IntentFilter powerConnectedIntentFilter = new IntentFilter("android.intent.action.ACTION_POWER_CONNECTED");
+    Intent setPinActivityIntent;
 
 
     @Override
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         startServiceButton = (ToggleButton) findViewById(R.id.startServiceButton);
         powerConnectionBroadcastReceiver = new PowerConnectionBroadcastReceiver();
+        setPinActivityIntent = new Intent(this, SetPinMainActivity.class);
 
         startServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     startServiceButton.setActivated(false);
                     Toast.makeText(MainActivity.this, "Service stopped", Toast.LENGTH_SHORT).show();
                 } else {
+                    //MainActivity.this.startActivity(setPinActivityIntent);
                     monitorBatteryChanges();
                 }
             }
