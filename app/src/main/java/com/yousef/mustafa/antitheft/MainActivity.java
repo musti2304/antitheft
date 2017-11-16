@@ -46,23 +46,4 @@ public class MainActivity extends AppCompatActivity {
         startServiceButton.setActivated(true);
         Toast.makeText(MainActivity.this, "Service started", Toast.LENGTH_SHORT).show();
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "onResume", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "onPause", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "onStop", Toast.LENGTH_SHORT).show();
-    }
-
 }
