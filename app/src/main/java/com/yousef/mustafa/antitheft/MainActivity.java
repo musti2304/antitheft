@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
 
         powerConnectionBroadcastReceiver = new PowerConnectionBroadcastReceiver();
         startServiceButton = (ToggleButton) findViewById(R.id.startServiceButton);
